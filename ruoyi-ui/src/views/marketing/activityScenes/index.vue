@@ -159,11 +159,25 @@
         </el-form-item>
 
         <el-form-item label="活动类型" prop="activityType">
-          <el-input v-model="form.activityType" placeholder="请输入活动类型"/>
+          <el-select v-model="queryParams.jobGroup" placeholder="请选择任务组名" clearable>
+            <el-option
+              v-for="dict in dict.type.sys_job_group"
+              :key="dict.value"
+              :label="dict.label"
+              :value="dict.value"
+            />
+          </el-select>
         </el-form-item>
 
         <el-form-item label="活动子类型" prop="activitySubType">
-          <el-input v-model="form.activitySubType" placeholder="请输入子类型"/>
+          <el-select v-model="queryParams.jobGroup" placeholder="请选择任务组名" clearable>
+            <el-option
+              v-for="dict in dict.type.sys_job_group"
+              :key="dict.value"
+              :label="dict.label"
+              :value="dict.value"
+            />
+          </el-select>
         </el-form-item>
 
         <el-form-item label="受邀活动" prop="defaultInvite">
@@ -202,14 +216,18 @@
           <el-input v-model="form.priority" placeholder="请输入优先级"/>
         </el-form-item>
 
-        <el-form-item label="活动开始时间" prop="startTime">
-          <el-input v-model="form.startTime" placeholder="请输入开始时间"/>
+        <el-form-item label="活动时间" prop="activityTime">
+          <el-date-picker
+            v-model="activityTime"
+            style="width: 240px"
+            value-format="yyyy-MM-dd"
+            type="daterange"
+            range-separator="-"
+            start-placeholder="开始日期"
+            end-placeholder="结束日期"
+          ></el-date-picker>
         </el-form-item>
 
-
-        <el-form-item label="活动结束时间" prop="endTime">
-          <el-input v-model="form.endTime" placeholder="请输入结束时间"/>
-        </el-form-item>
 
         <el-form-item label="备注">
           <el-input v-model="form.remark" type="textarea" placeholder="请输入内容"></el-input>
